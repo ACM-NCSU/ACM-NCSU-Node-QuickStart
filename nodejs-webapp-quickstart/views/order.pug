@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  .row
+    .col-md-6
+      form(method="POST", action="/order")
+        .form-group
+          label(for="name") Name:
+          input(type="text", name="name", class="form-control")
+
+        .form-group
+          label(for="breadType") Bread Type:
+          select(name="breadType", class="form-control")
+            option(value="wheat") Wheat
+            option(value="white") White
+            option(value="cheese") Cheese
+
+        .form-group
+          label(for="toppings") Toppings:
+          .checkbox
+            input(type="checkbox", name="toppings", value="cheese")
+            | Cheese
+          .checkbox
+            input(type="checkbox", name="toppings", value="lettuce")
+            | Lettuce
+          .checkbox
+            input(type="checkbox", name="toppings", value="salami")
+            | Salami
+          .checkbox
+            input(type="checkbox", name="toppings", value="salt")
+            | Salt
+          .checkbox
+            input(type="checkbox", name="toppings", value="tomatoes")
+            | Tomatoes
+
+        .form-group
+          label(for="notes") Order Notes
+          textarea(name="notes", cols="30", rows="10", class="form-control")
+
+        .form-group
+          button(type="submit" class="btn btn-primary") Order Sandwich
