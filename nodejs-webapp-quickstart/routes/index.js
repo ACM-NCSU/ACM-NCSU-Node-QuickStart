@@ -18,6 +18,14 @@ router.get('/login', function (req, res) {
 router.post('/order', function (req, res) {
     let order = req.body;
     order.position = orders.length + 1;
+
+    // Hack for making toppings an Array
+    if (order.toppings) {
+        order.toppings = typeof(order.toppings) === 'string' ? [order.toppings] : order.toppings;
+    }
+
+    // Consider: invalid input.
+    
     orders.push(order);
 
     res.render('order_submitted', { title: 'Order Submitted', order });
@@ -27,6 +35,5 @@ router.post('/order', function (req, res) {
 router.get('/order', function (req, res) {
     res.render('order', { title: 'Order Page' });
 });
-
 
 module.exports = router;

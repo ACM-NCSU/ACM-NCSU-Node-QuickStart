@@ -6,29 +6,22 @@ block content
       form(method="POST", action="/order")
         .form-group
           label(for="name") Name:
-          input(type="text", name="name", class="form-control")
+          input(type="text", name="name", class="form-control", required)
 
         .form-group
           label(for="breadType") Bread Type:
-          select(name="breadType", class="form-control")
+          select(name="breadType", class="form-control", required)
             option(value="wheat") Wheat
             option(value="white") White
-            option(value="cheese") Cheese
 
         .form-group
           label(for="toppings") Toppings:
-          .checkbox
-            input(type="checkbox", name="toppings", value="cheese")
-            | Cheese
           .checkbox
             input(type="checkbox", name="toppings", value="lettuce")
             | Lettuce
           .checkbox
             input(type="checkbox", name="toppings", value="salami")
             | Salami
-          .checkbox
-            input(type="checkbox", name="toppings", value="salt")
-            | Salt
           .checkbox
             input(type="checkbox", name="toppings", value="tomatoes")
             | Tomatoes
