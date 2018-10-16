@@ -19,6 +19,14 @@ Here's the basic agenda
 
 ## Web App
 
-1.) Explain routing and Pug
+Explain routing and Pug:
+   
+ - Start with defining the layout for the Order view `views/order.pug`
+ - Then, make the page for the resulting order `views/order_submitted.pug`
+ - Then, add a route in `routes/index.js` for `POST`ing and `GET`ing an order
+ - Demo the _somewhat_ working app, highlight the bug (pick only 1 topping)
+ - Finally, fix the `POST` route so that a single choice for topping gives an array
 
-2.) 
+## Electron App
+
+Wade, it's all in your hands now.
