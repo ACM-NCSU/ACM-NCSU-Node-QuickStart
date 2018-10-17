@@ -1,0 +1,32 @@
+﻿doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{title} - JimmyMike's Sandwich Shop
+    link(rel='stylesheet', type='text/css', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+
+  body
+    .navbar.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') JimmyMike's Sandwich Shop
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              a(href='') Home
+            li
+              a(href='javascript:order()') Order
+
+    .container.body-content
+      block content
+      hr
+      footer
+        p &copy; ACM/AITP @ NCSU Intro Node.js Workshop Web Application
+
+    block scripts

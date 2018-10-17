@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .row
+    .col-md-7
+      h1 Order Submitted
+      h3 Thanks for your order, #{order.name}!
+
+      p
+        | Your sandwich with #{order.toppings.join(", ")} on 
+        | #{order.breadType} is being prepared. You are number #{order.position}
+        | in line.
+
+      b Order Notes:
+      textarea(name="notes", cols="30", rows="3", class="form-control", readonly) #{order.notes}
+
+
+        
