@@ -4,15 +4,9 @@ block content
   .row
     .col-md-7
       h1 Order Submitted
-      h3 Thanks for your order, #{order.name}!
+      h3(id='confirmation-h3')
 
-      p
-        | Your sandwich with #{order.toppings.join(", ")} on 
-        | #{order.breadType} is being prepared. You are number #{order.position}
-        | in line.
+      p(id='confirmation-p')
 
       b Order Notes:
-      textarea(name="notes", cols="30", rows="3", class="form-control", readonly) #{order.notes}
-
-
-        
+      textarea(name="notes", id='confirmation-notes' cols="30", rows="3", class="form-control", readonly)

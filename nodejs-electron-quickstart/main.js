@@ -8,16 +8,13 @@ const path = require('path')
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
+var orderPosition = 1
+
 async function createWindow () {
    // Setup app to use pug view engine
-   try {
-     let pug = await setupPug({pretty: true}, locals)
-     pug.on('error', err => console.error('electron-pug error', err))
-   } catch (err) {
-     // Could not initiate 'electron-pug'
-   }
+   await setUpOurPug()
    // Create the browser window.
-   mainWindow = new BrowserWindow({width: 800, height: 600})
+   mainWindow = new BrowserWindow({width: 800, height: 600, title: 'main-win'})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -38,6 +35,18 @@ async function createWindow () {
   })
 }
 
+async function setUpOurPug(params=null) {
+
+  const locals = params
+  try {
+    let pug = await setupPug({pretty: true}, params)
+    pug.on('error', err => console.error('electron-pug error', err))
+  } catch (err) {
+    // Could not initiate 'electron-pug'
+    console.log(err)
+  }
+}
+
 
 
 ipcMain.on('show-order-page', function(event) {
@@ -56,6 +65,21 @@ ipcMain.on('show-home', function(event) {
     }))
 });
 
+ipcMain.on('place-order', async function(event, params) {
+
+    params['position'] = orderPosition
+    orderPosition += 1
+    // Load confirmation page
+    mainWindow.loadURL(url.format({
+      pathname: path.join(__dirname, 'views/order_submitted.pug'),
+      protocol: 'file:',
+      slashes: true
+    }))
+    // When renderer process for new page is ready, send
+    mainWindow.webContents.on('did-finish-load', () => {
+      mainWindow.webContents.send('confirm-order' , params);
+    })
+});
 
 
 
