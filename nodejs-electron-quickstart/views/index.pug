@@ -1,15 +1,12 @@
-//- layout.pug
-block content
-  html
-    head
-      title Node Electron QuickStart
-    body
-      <script type="text/javascript" src="../src/renderer.js"></script>
-      link(rel='stylesheet', href='../css/bootstrap.css', type='text/css' )
-      link(rel='stylesheet', href='../css/style.css', type='text/css' )
+﻿extends layout
 
-      h1 Hello World!
-      <!-- All of the Node.js APIs are available in this renderer process. -->
-      p We are using Node.js <script>document.write(process.versions.node)</script>,
-        Chromium <script>document.write(process.versions.chrome)</script>,
-        and Electron <script>document.write(process.versions.electron)</script>.
+block content
+  .main-container
+    .cloud-image
+        img(src='../public/images/sandwich.svg')
+    .content
+        .content-body
+            .success-text
+                p Welcome!
+            .description
+                p JimmyMike's Sandwich Shop - A freaky slow sub below.

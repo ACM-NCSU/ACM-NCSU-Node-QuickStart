@@ -1,5 +1,5 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const setupPug = require('electron-pug')
 const url = require('url')
 const path = require('path')
@@ -11,10 +11,11 @@ let mainWindow
 async function createWindow () {
    // Setup app to use pug view engine
    try {
-     let pug = await setupPug({pretty: true}, locals)
+     let pug = await setupPug({pretty: true})
      pug.on('error', err => console.error('electron-pug error', err))
    } catch (err) {
      // Could not initiate 'electron-pug'
+     console.log("Error: " + err)
    }
    // Create the browser window.
    mainWindow = new BrowserWindow({width: 800, height: 600})
@@ -40,6 +41,13 @@ async function createWindow () {
 
 
 
+ipcMain.on('show-home', function(event) {
+    mainWindow.loadURL(url.format({
+      pathname: path.join(__dirname, 'views/index.pug'),
+      protocol: 'file:',
+      slashes: true
+    }))
+});
 
 
 

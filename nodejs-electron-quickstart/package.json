@@ -4,20 +4,23 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": "https://github.com/ACM-NCSU/ACM-NCSU-Node-QuickStart/tree/test",
   "keywords": [
     "Electron",
+    "NCSU",
     "quick",
     "start",
     "tutorial",
     "demo"
   ],
-  "author": "GitHub",
+  "author": "ACM-AITP@NCSU",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^3.0.3"
+    "electron": "^3.0.3",
+    "electron-builder": "^20.28.4"
   },
   "dependencies": {
     "electron-pug": "^2.0.0"
